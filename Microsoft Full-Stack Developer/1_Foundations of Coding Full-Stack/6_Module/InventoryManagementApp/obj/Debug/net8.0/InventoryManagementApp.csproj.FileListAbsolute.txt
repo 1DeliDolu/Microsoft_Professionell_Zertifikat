@@ -1,0 +1,15 @@
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/bin/Debug/net8.0/InventoryManagementApp
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/bin/Debug/net8.0/InventoryManagementApp.deps.json
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/bin/Debug/net8.0/InventoryManagementApp.runtimeconfig.json
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/bin/Debug/net8.0/InventoryManagementApp.dll
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/bin/Debug/net8.0/InventoryManagementApp.pdb
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/obj/Debug/net8.0/InventoryManagementApp.GeneratedMSBuildEditorConfig.editorconfig
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/obj/Debug/net8.0/InventoryManagementApp.AssemblyInfoInputs.cache
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/obj/Debug/net8.0/InventoryManagementApp.AssemblyInfo.cs
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/obj/Debug/net8.0/InventoryManagementApp.csproj.CoreCompileInputs.cache
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/obj/Debug/net8.0/InventoryManagementApp.sourcelink.json
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/obj/Debug/net8.0/InventoryManagementApp.dll
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/obj/Debug/net8.0/refint/InventoryManagementApp.dll
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/obj/Debug/net8.0/InventoryManagementApp.pdb
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/obj/Debug/net8.0/InventoryManagementApp.genruntimeconfig.cache
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/obj/Debug/net8.0/ref/InventoryManagementApp.dll
