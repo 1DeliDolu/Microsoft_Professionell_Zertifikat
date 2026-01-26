@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6_Module", "6_Module", "{23D9B09E-3C08-E1C8-28A7-5CBA6A7CFEC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagementApp", "6_Module\InventoryManagementApp\InventoryManagementApp.csproj", "{FAF3662F-4249-9A80-AA81-E4D4E904470B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAF3662F-4249-9A80-AA81-E4D4E904470B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAF3662F-4249-9A80-AA81-E4D4E904470B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAF3662F-4249-9A80-AA81-E4D4E904470B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAF3662F-4249-9A80-AA81-E4D4E904470B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FAF3662F-4249-9A80-AA81-E4D4E904470B} = {23D9B09E-3C08-E1C8-28A7-5CBA6A7CFEC3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00DDC665-03DF-425C-A2DA-3DF0CAE7156C}
+	EndGlobalSection
+EndGlobal

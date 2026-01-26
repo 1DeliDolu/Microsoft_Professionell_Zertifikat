@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "9+/MtloEkBs=",
+  "dgSpecHash": "m/iuh9AgvJI=",
   "success": true,
-  "projectFilePath": "/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/1_Foundations of Coding Full-Stack/6_Module/InventoryManagementApp/InventoryManagementApp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\CODE\\Microsoft_Professionell_Zertifikat\\Microsoft Full-Stack Developer\\1_Foundations of Coding Full-Stack\\6_Module\\InventoryManagementApp\\InventoryManagementApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\musta\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.21\\microsoft.netcore.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\musta\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.21\\microsoft.windowsdesktop.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\musta\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.21\\microsoft.aspnetcore.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\musta\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.21\\microsoft.netcore.app.host.win-x64.8.0.21.nupkg.sha512"
+  ],
   "logs": []
 }
