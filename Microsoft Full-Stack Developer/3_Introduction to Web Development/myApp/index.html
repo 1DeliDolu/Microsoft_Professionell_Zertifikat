@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mustafa Özdemir | Front-End Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Mustafa Özdemir, a front-end developer focused on accessible, fast, and delightful web experiences."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <a class="logo" href="#top">Mustafa Özdemir</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+        <nav
+          id="primary-nav"
+          class="site-nav"
+          role="navigation"
+          aria-label="Primary"
+        >
+          <ul>
+            <li><a href="#about-me">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="intro-title">
+        <div class="container">
+          <h1 id="intro-title">Hi, I'm Mustafa Özdemir.</h1>
+          <p>
+            Front-end developer building accessible, responsive, and performant
+            web experiences.
+          </p>
+          <a class="button" href="#projects">View projects</a>
+        </div>
+      </section>
+
+      <section id="about-me" class="section" aria-labelledby="about-title">
+        <div class="container">
+          <h2 id="about-title">About Me</h2>
+          <p>
+            I turn complex problems into simple, beautiful interfaces. I care
+            about semantic HTML, inclusive design, and clean, maintainable CSS.
+          </p>
+        </div>
+      </section>
+
+      <section id="projects" class="section" aria-labelledby="projects-title">
+        <div class="container">
+          <h2 id="projects-title">Projects</h2>
+          <div class="project-filters" role="group" aria-label="Project filters">
+            <button type="button" class="filter-button is-active" data-filter="all">
+              All
+            </button>
+            <button type="button" class="filter-button" data-filter="web">
+              Web
+            </button>
+            <button type="button" class="filter-button" data-filter="ui">
+              UI/UX
+            </button>
+            <button type="button" class="filter-button" data-filter="data">
+              Data
+            </button>
+          </div>
+          <div class="projects-grid">
+            <article class="project" data-category="web">
+              <figure>
+                <img
+                  src="images/project-1.png"
+                  alt="Screenshot of Project One landing page"
+                  loading="lazy"
+                />
+                <figcaption>Project One: Responsive marketing site</figcaption>
+              </figure>
+              <h3>Project One</h3>
+              <p>
+                A single-page marketing site with responsive layouts, optimized
+                images, and accessible navigation.
+              </p>
+              <a class="project-link" href="#">View case study</a>
+            </article>
+
+            <article class="project" data-category="data">
+              <figure>
+                <img
+                  src="images/project-2.png"
+                  alt="Dashboard interface for Project Two analytics"
+                  loading="lazy"
+                />
+                <figcaption>Project Two: Analytics dashboard</figcaption>
+              </figure>
+              <h3>Project Two</h3>
+              <p>
+                A data-rich dashboard built with semantic HTML, reusable
+                components, and clear information hierarchy.
+              </p>
+              <a class="project-link" href="#">View case study</a>
+            </article>
+
+            <article class="project" data-category="ui">
+              <figure>
+                <img
+                  src="images/project-3.png"
+                  alt="Mobile app prototype for Project Three"
+                  loading="lazy"
+                />
+                <figcaption>Project Three: Mobile-first UI</figcaption>
+              </figure>
+              <h3>Project Three</h3>
+              <p>
+                A mobile-first interface focused on performance, clarity, and
+                delightful interactions.
+              </p>
+              <a class="project-link" href="#">View case study</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section" aria-labelledby="skills-title">
+        <div class="container">
+          <h2 id="skills-title">Skills</h2>
+          <ul class="skills-list">
+            <li>HTML5 &amp; Semantic Markup</li>
+            <li>Accessible UI Design</li>
+            <li>Responsive Layouts</li>
+            <li>CSS (Flexbox, Grid)</li>
+            <li>JavaScript (ES6+)</li>
+            <li>Performance Optimization</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact" class="section" aria-labelledby="contact-title">
+        <div class="container">
+          <h2 id="contact-title">Contact</h2>
+          <form class="contact-form" action="#" method="post">
+            <p class="form-status" role="status" aria-live="polite"></p>
+            <div class="form-row">
+              <label for="full-name">Full name</label>
+              <input
+                id="full-name"
+                name="full-name"
+                type="text"
+                autocomplete="name"
+                aria-describedby="full-name-error"
+                required
+              />
+              <small class="error" id="full-name-error"></small>
+            </div>
+
+            <div class="form-row">
+              <label for="email">Email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                aria-describedby="email-error"
+                required
+              />
+              <small class="error" id="email-error"></small>
+            </div>
+
+            <div class="form-row">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                aria-describedby="message-error"
+                required
+              ></textarea>
+              <small class="error" id="message-error"></small>
+            </div>
+
+            <button type="submit">Send message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2026 Mustafa Özdemir. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <div
+      class="lightbox"
+      hidden
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Project image viewer"
+    >
+      <div class="lightbox-content">
+        <button class="lightbox-close" type="button">Close</button>
+        <img class="lightbox-image" alt="" />
+        <p class="lightbox-caption"></p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
