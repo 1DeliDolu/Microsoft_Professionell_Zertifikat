@@ -1,0 +1,126 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0": {
+      "Pastel/4.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Pastel.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Pastel.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Pastel/4.0.0": {
+      "sha512": "jdQw41DosS/nSVw+zVhGp8uXFlxiz/Pi5nVuUvsrsxxhXnoE8gxOFbQTs9q7cUE1h8iS3AOOW/VAXv9b8gFMlg==",
+      "type": "package",
+      "path": "pastel/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "icon.png",
+        "lib/net462/Pastel.dll",
+        "lib/net462/Pastel.xml",
+        "lib/net6.0/Pastel.dll",
+        "lib/net6.0/Pastel.xml",
+        "lib/net7.0/Pastel.dll",
+        "lib/net7.0/Pastel.xml",
+        "pastel.4.0.0.nupkg.sha512",
+        "pastel.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0": [
+      "Pastel >= 3.2.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\musta\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\CODE\\Microsoft_Professionell_Zertifikat\\Microsoft Full-Stack Developer\\2_Introduction to Programming With C#\\ConsoleApp\\ConsoleApp.csproj",
+      "projectName": "ConsoleApp",
+      "projectPath": "D:\\CODE\\Microsoft_Professionell_Zertifikat\\Microsoft Full-Stack Developer\\2_Introduction to Programming With C#\\ConsoleApp\\ConsoleApp.csproj",
+      "packagesPath": "C:\\Users\\musta\\.nuget\\packages\\",
+      "outputPath": "D:\\CODE\\Microsoft_Professionell_Zertifikat\\Microsoft Full-Stack Developer\\2_Introduction to Programming With C#\\ConsoleApp\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\musta\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.300"
+    },
+    "frameworks": {
+      "net9.0": {
+        "targetAlias": "net9.0",
+        "dependencies": {
+          "Pastel": {
+            "target": "Package",
+            "version": "[3.2.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "ConsoleApp hängt von Pastel (>= 3.2.0) ab, aber Pastel 3.2.0 wurde nicht gefunden. Pastel 4.0.0 wurde stattdessen aufgelöst.",
+      "libraryId": "Pastel",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
+}

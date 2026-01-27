@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "ConsoleApp/1.0.0": {
+        "dependencies": {
+          "Pastel": "4.0.0"
+        },
+        "runtime": {
+          "ConsoleApp.dll": {}
+        }
+      },
+      "Pastel/4.0.0": {
+        "runtime": {
+          "lib/net7.0/Pastel.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ConsoleApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Pastel/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jdQw41DosS/nSVw+zVhGp8uXFlxiz/Pi5nVuUvsrsxxhXnoE8gxOFbQTs9q7cUE1h8iS3AOOW/VAXv9b8gFMlg==",
+      "path": "pastel/4.0.0",
+      "hashPath": "pastel.4.0.0.nupkg.sha512"
+    }
+  }
+}
