@@ -1,0 +1,60 @@
+What code did you write to add a borrowing limit feature to the library management system application?
+
+Copy and paste the applicable code here.
+
+```csharp
+const int borrowLimit = 3;
+int borrowedCount = 0;
+```
+
+```csharp
+Console.WriteLine($"Borrowed books: {borrowedCount}/{borrowLimit}");
+```
+
+```csharp
+static bool TryCheckOut(
+    ref string b1, ref string b2, ref string b3, ref string b4, ref string b5,
+    ref bool c1, ref bool c2, ref bool c3, ref bool c4, ref bool c5,
+    string title, ref int borrowedCount, int limit, out string message)
+{
+    if (borrowedCount >= limit)
+    {
+        message = $"Borrowing limit reached ({limit}). Return a book first.";
+        return false;
+    }
+
+    if (TitlesMatch(b1, title))
+    {
+        if (c1) { message = "That book is already checked out."; return false; }
+        c1 = true; borrowedCount++; message = $"Checked out: {b1}";
+        return true;
+    }
+    if (TitlesMatch(b2, title))
+    {
+        if (c2) { message = "That book is already checked out."; return false; }
+        c2 = true; borrowedCount++; message = $"Checked out: {b2}";
+        return true;
+    }
+    if (TitlesMatch(b3, title))
+    {
+        if (c3) { message = "That book is already checked out."; return false; }
+        c3 = true; borrowedCount++; message = $"Checked out: {b3}";
+        return true;
+    }
+    if (TitlesMatch(b4, title))
+    {
+        if (c4) { message = "That book is already checked out."; return false; }
+        c4 = true; borrowedCount++; message = $"Checked out: {b4}";
+        return true;
+    }
+    if (TitlesMatch(b5, title))
+    {
+        if (c5) { message = "That book is already checked out."; return false; }
+        c5 = true; borrowedCount++; message = $"Checked out: {b5}";
+        return true;
+    }
+
+    message = "Book not found. Please check the title and try again.";
+    return false;
+}
+```

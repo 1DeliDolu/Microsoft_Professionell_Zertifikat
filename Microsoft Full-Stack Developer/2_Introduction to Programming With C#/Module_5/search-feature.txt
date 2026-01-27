@@ -1,0 +1,52 @@
+What code did you write to add a search feature to the library management system application?
+
+Copy and paste the applicable code here.
+
+```csharp
+else if (action == "search")
+{
+    Console.Write("Enter a book title to search for: ");
+    string titleToSearch = (Console.ReadLine() ?? "").Trim();
+
+    if (string.IsNullOrWhiteSpace(titleToSearch))
+    {
+        Console.WriteLine("Invalid title. Please enter a non-empty book title.");
+        continue;
+    }
+
+    bool isCheckedOut;
+    if (TryFindBook(
+        book1, book2, book3, book4, book5,
+        book1CheckedOut, book2CheckedOut, book3CheckedOut, book4CheckedOut, book5CheckedOut,
+        titleToSearch, out isCheckedOut))
+    {
+        if (isCheckedOut)
+        {
+            Console.WriteLine("Book found, but it is currently checked out.");
+        }
+        else
+        {
+            Console.WriteLine("Book found and it is available.");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Book not found in the collection.");
+    }
+}
+
+static bool TryFindBook(
+    string b1, string b2, string b3, string b4, string b5,
+    bool c1, bool c2, bool c3, bool c4, bool c5,
+    string title, out bool isCheckedOut)
+{
+    if (TitlesMatch(b1, title)) { isCheckedOut = c1; return true; }
+    if (TitlesMatch(b2, title)) { isCheckedOut = c2; return true; }
+    if (TitlesMatch(b3, title)) { isCheckedOut = c3; return true; }
+    if (TitlesMatch(b4, title)) { isCheckedOut = c4; return true; }
+    if (TitlesMatch(b5, title)) { isCheckedOut = c5; return true; }
+
+    isCheckedOut = false;
+    return false;
+}
+```

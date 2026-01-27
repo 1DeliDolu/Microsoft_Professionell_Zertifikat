@@ -1,0 +1,15 @@
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/bin/Debug/net9.0/LibraryManagementSystem
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/bin/Debug/net9.0/LibraryManagementSystem.deps.json
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/bin/Debug/net9.0/LibraryManagementSystem.runtimeconfig.json
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/bin/Debug/net9.0/LibraryManagementSystem.dll
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/bin/Debug/net9.0/LibraryManagementSystem.pdb
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/obj/Debug/net9.0/LibraryManagementSystem.GeneratedMSBuildEditorConfig.editorconfig
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/obj/Debug/net9.0/LibraryManagementSystem.AssemblyInfoInputs.cache
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/obj/Debug/net9.0/LibraryManagementSystem.AssemblyInfo.cs
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/obj/Debug/net9.0/LibraryManagementSystem.csproj.CoreCompileInputs.cache
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/obj/Debug/net9.0/LibraryManagementSystem.sourcelink.json
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/obj/Debug/net9.0/LibraryManagementSystem.dll
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/obj/Debug/net9.0/refint/LibraryManagementSystem.dll
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/obj/Debug/net9.0/LibraryManagementSystem.pdb
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/obj/Debug/net9.0/LibraryManagementSystem.genruntimeconfig.cache
+/mnt/d/CODE/Microsoft_Professionell_Zertifikat/Microsoft Full-Stack Developer/2_Introduction to Programming With C#/Module_5/LibraryManagementSystem/obj/Debug/net9.0/ref/LibraryManagementSystem.dll
