@@ -1,0 +1,23 @@
+# Ignore build output directories
+**/bin/
+**/obj/
+
+# Visual Studio / VS Code
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# NuGet packages and caches
+*.nupkg
+packages/
+
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+
+# Other
+*.db
