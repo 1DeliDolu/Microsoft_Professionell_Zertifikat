@@ -1,0 +1,33 @@
+@SerilalizationApp_HostAddress = http://localhost:5101
+
+GET {{SerilalizationApp_HostAddress}}/
+Accept: text/plain
+
+###
+
+GET {{SerilalizationApp_HostAddress}}/manual-json
+Accept: application/json
+
+###
+
+GET {{SerilalizationApp_HostAddress}}/custom-serializer
+Accept: application/json
+
+###
+
+GET {{SerilalizationApp_HostAddress}}/json
+Accept: application/json
+
+###
+
+GET {{SerilalizationApp_HostAddress}}/xml
+Accept: application/xml
+
+###
+
+GET {{SerilalizationApp_HostAddress}}/auto
+Accept: application/json
+
+###
+GET {{SerilalizationApp_HostAddress}}/xml
+Accept: application/xml

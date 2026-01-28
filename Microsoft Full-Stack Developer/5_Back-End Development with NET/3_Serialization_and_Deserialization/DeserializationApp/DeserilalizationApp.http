@@ -1,0 +1,40 @@
+@DeserializationApp_HostAddress = http://127.0.0.1:5000
+
+# If you run with dynamic port (127.0.0.1:0), update the port above
+
+### Auto (model binding)
+POST {{DeserializationApp_HostAddress}}/auto
+Content-Type: application/json
+
+{
+  "userName": "Alice",
+  "userAge": 30
+}
+
+### JSON (ReadFromJsonAsync)
+POST {{DeserializationApp_HostAddress}}/json
+Content-Type: application/json
+
+{
+  "userName": "Bob",
+  "userAge": 25
+}
+
+### Custom options (disallow extra fields)
+POST {{DeserializationApp_HostAddress}}/custom-options
+Content-Type: application/json
+
+{
+  "userName": "Charlie",
+  "userAge": 28,
+  "extraField": "not-allowed"
+}
+
+### XML
+POST {{DeserializationApp_HostAddress}}/xml
+Content-Type: application/xml
+
+<Person>
+  <UserName>Dana</UserName>
+  <UserAge>40</UserAge>
+</Person>

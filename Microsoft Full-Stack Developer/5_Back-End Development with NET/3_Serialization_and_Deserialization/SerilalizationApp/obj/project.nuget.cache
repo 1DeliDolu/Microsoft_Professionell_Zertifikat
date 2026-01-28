@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "DjcwxaNbP9g=",
+  "success": true,
+  "projectFilePath": "D:\\CODE\\Microsoft_Professionell_Zertifikat\\Microsoft Full-Stack Developer\\5_Back-End Development with NET\\3_Serialization_and_Deserialization\\SerilalizationApp\\SerilalizationApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\musta\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.10\\microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
+    "C:\\Users\\musta\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
