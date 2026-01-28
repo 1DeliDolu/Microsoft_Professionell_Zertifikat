@@ -1,0 +1,39 @@
+@UserManagementAPI_HostAddress = http://localhost:41769
+@userId = 00000000-0000-0000-0000-000000000000
+@authToken = dev-token-123
+
+### Get all users (paged)
+GET {{UserManagementAPI_HostAddress}}/users?skip=0&take=50
+Accept: application/json
+Authorization: Bearer {{authToken}}
+
+### Create a user
+POST {{UserManagementAPI_HostAddress}}/users
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "email": "jane.doe@techhive.local",
+  "department": "HR"
+}
+
+### Get a user by id
+GET {{UserManagementAPI_HostAddress}}/users/{{userId}}
+Accept: application/json
+Authorization: Bearer {{authToken}}
+
+### Update a user
+PUT {{UserManagementAPI_HostAddress}}/users/{{userId}}
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "department": "IT",
+  "isActive": false
+}
+
+### Delete a user
+DELETE {{UserManagementAPI_HostAddress}}/users/{{userId}}
+Authorization: Bearer {{authToken}}

@@ -1,0 +1,9 @@
+record User(
+    Guid Id,
+    string FirstName,
+    string LastName,
+    string Email,
+    string? Department,
+    bool IsActive,
+    DateTimeOffset CreatedAt,
+    DateTimeOffset UpdatedAt);
