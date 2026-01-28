@@ -1,0 +1,17 @@
+###
+GET http://localhost:5103/items
+
+###
+POST http://localhost:5103/items
+Content-Type: application/json
+
+{
+    "name": "NewItem",
+    "price": 5.00,
+    "createdDate": "{{$timestamp}}"
+}
+
+//GET http://localhost:5103/items/{{itemId}}
+###
+DELETE http://localhost:5103/items/1
+

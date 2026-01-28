@@ -1,0 +1,15 @@
+@AdvancedRouting_HostAddress = http://localhost:5248
+
+GET {{AdvancedRouting_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{AdvancedRouting_HostAddress}}/users/42/posts/some-title
+
+###
+
+GET {{AdvancedRouting_HostAddress}}/products/10
+
+
+###
+GET {{AdvancedRouting_HostAddress}}/report/

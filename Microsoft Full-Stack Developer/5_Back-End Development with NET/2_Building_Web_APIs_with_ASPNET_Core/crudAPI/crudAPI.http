@@ -1,0 +1,36 @@
+@crudAPI_HostAddress = http://localhost:5006
+
+GET {{crudAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+// all blogs
+###
+GET {{crudAPI_HostAddress}}/blogs
+
+// blog with id 1
+###
+GET {{crudAPI_HostAddress}}/blogs/0
+
+// create new blog
+###
+POST {{crudAPI_HostAddress}}/blogs
+Content-Type: application/json
+
+{
+  "title": "New Blog Title",
+  "body": "This is the content of the new blog and third blog in the list."
+}
+
+#delete blog with id 1
+###
+DELETE {{crudAPI_HostAddress}}/blogs/1  
+
+// update blog with id 0
+###
+PUT {{crudAPI_HostAddress}}/blogs/0
+Content-Type: application/json
+
+{
+  "title": "Updated Blog Title",
+  "body": "This is the updated content of the blog with id 0."
+}
