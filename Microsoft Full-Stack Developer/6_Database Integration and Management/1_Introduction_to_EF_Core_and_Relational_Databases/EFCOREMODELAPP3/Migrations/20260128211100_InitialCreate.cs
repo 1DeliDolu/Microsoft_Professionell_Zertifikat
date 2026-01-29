@@ -15,44 +15,59 @@ namespace EFCOREMODELAPP3.Migrations
                 name: "Departments",
                 columns: table => new
                 {
-                    DepartmentId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    DepartmentID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Departments", x => x.DepartmentId);
+                    table.PrimaryKey("PK_Departments", x => x.DepartmentID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
                 {
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HireDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DepartmentID = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DepartmentId = table.Column<int>(type: "int", nullable: false),
-                    Salary = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    EmployeeID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FirstName = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    HireDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DepartmentID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.EmployeeId);
+                    table.PrimaryKey("PK_Employees", x => x.EmployeeID);
                     table.ForeignKey(
-                        name: "FK_Employees_Departments_DepartmentId",
-                        column: x => x.DepartmentId,
+                        name: "FK_Employees_Departments_DepartmentID",
+                        column: x => x.DepartmentID,
                         principalTable: "Departments",
-                        principalColumn: "DepartmentId",
+                        principalColumn: "DepartmentID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Employees_DepartmentId",
+            migrationBuilder.InsertData(
+                table: "Departments",
+                columns: new[] { "DepartmentID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "HR" },
+                    { 2, "Engineering" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Employees",
-                column: "DepartmentId");
+                columns: new[] { "EmployeeID", "DepartmentID", "FirstName", "HireDate", "LastName" },
+                values: new object[,]
+                {
+                    { 1, 1, "Aiko", new DateTime(2026, 1, 28, 0, 0, 0, 0, DateTimeKind.Local), "Tanaka" },
+                    { 2, 2, "Zainab", new DateTime(2026, 1, 28, 0, 0, 0, 0, DateTimeKind.Local), "Al-Farsi" }
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Employees_DepartmentID",
+                table: "Employees",
+                column: "DepartmentID");
         }
 
         /// <inheritdoc />
