@@ -1,0 +1,30 @@
+###
+
+@baseUrl=http://localhost:5271
+
+###
+GET {{baseUrl}}/tasks   
+
+// add task
+###
+POST {{baseUrl}}/tasks
+Content-Type: application/json
+
+{
+  "title": "New Task 3",
+  "isComplete": false
+}
+
+// update task
+###
+PUT {{baseUrl}}/tasks/1 
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Updated Task",
+  "isComplete": true
+}
+// delete task
+###
+DELETE {{baseUrl}}/tasks/1

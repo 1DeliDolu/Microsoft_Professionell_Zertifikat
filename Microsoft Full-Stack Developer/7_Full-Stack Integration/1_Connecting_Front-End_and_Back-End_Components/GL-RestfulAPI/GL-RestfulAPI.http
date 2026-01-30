@@ -1,0 +1,6 @@
+@GL_RestfulAPI_HostAddress = http://localhost:5110
+
+GET {{GL_RestfulAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
