@@ -15,6 +15,13 @@
     </div>
 
     <div class="mb-3">
+        <label class="form-label">Username</label>
+        <InputText @bind-Value="model.Username" class="form-control" pattern="[a-zA-Z0-9]{4,12}"
+            title="Must be 4-12 characters long and alphanumeric" />
+        <ValidationMessage For="() => model.Username" />
+    </div>
+
+    <div class="mb-3">
         <label class="form-label">Password</label>
 
         <div class="input-group">
@@ -76,6 +83,14 @@
 
     private async Task HandleValidSubmit()
     {
+        // Double-check passwords match (server-side validation already enforces this via Compare)
+        if (model.Password != model.ConfirmPassword)
+        {
+            statusMessage = "Passwords do not match.";
+            statusClass = "alert-danger";
+            return;
+        }
+
         isSubmitting = true;
         statusMessage = string.Empty;
         statusClass = string.Empty;
@@ -106,6 +121,10 @@
 
     public class RegisterModel : IValidatableObject
     {
+        [Required(ErrorMessage = "Username is required")]
+        [RegularExpression("^[a-zA-Z0-9]{4,12}$", ErrorMessage = "Username must be 4-12 alphanumeric characters")]
+        public string Username { get; set; } = string.Empty;
+
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
         public string Email { get; set; } = string.Empty;
