@@ -1,0 +1,26 @@
+@page "/counter"
+@rendermode InteractiveServer
+@inject Blazored.SessionStorage.ISessionStorageService SessionStorage
+
+<h1>Counter</h1>
+<p>Current count: @CounterInc</p>
+<button @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int CounterInc;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            CounterInc = await SessionStorage.GetItemAsync<int>("Counter");
+        }
+    }
+
+
+    private async Task IncrementCount()
+    {
+        CounterInc++;
+        await SessionStorage.SetItemAsync("Counter", CounterInc);
+    }
+}
