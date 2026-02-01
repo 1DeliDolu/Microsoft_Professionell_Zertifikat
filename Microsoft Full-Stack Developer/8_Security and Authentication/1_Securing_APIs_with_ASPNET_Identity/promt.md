@@ -1,307 +1,107 @@
-Tamam — verdiğin yönerge/answer key’e göre projeyi **VS Code + ASP.NET Core MVC + ASP.NET Identity + InMemory** ile **adım adım** kuracağız. Aşağıdaki adımlar, “çalışır” bir yapı çıkarmak için küçük ama kritik düzeltmeleri de içeriyor (namespace, view konumu, cookie login path, Identity parola kuralları gibi).
+
 
 ---
 
-## Step 1 — Projeyi oluşturma ve paketleri kurma
+## Step 8 — Navbar: Login/Register/Logout + “Merhaba user”
 
-Terminal:
+Dosya: `Views/Shared/_Layout.cshtml`
 
-```bash
-dotnet new mvc -n UserAuthInMemoryApp
-cd UserAuthInMemoryApp
-
-dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
-dotnet add package Microsoft.AspNetCore.Identity.UI
-dotnet add package Microsoft.EntityFrameworkCore.InMemory
-
-dotnet restore
-```
-
-Kontrol: Proje derleniyor mu?
-
-```bash
-dotnet build
-```
-
----
-
-## Step 2 — ApplicationDbContext oluşturma (Identity’nin kullanacağı DbContext)
-
-Şu yolu oluştur:
-
-* `Data/ApplicationDbContext.cs`
-
-**Data/ApplicationDbContext.cs**
-
-```csharp
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-
-namespace UserAuthInMemoryApp.Data;
-
-public class ApplicationDbContext : IdentityDbContext
-{
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {
-    }
-}
-```
-
-> Not: `namespace` satırı önemli; birazdan `Program.cs` içinde bunu kullanacağız.
-
----
-
-## Step 3 — Program.cs: InMemory + Identity servislerini bağlama
-
-`Program.cs` dosyanı aşağıdaki gibi düzenle:
-
-**Program.cs**
-
-```csharp
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using UserAuthInMemoryApp.Data;
-
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddControllersWithViews();
-
-// In-memory database
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseInMemoryDatabase("InMemoryUserAuthApp"));
-
-// Identity
-builder.Services
-    .AddDefaultIdentity<IdentityUser>(options =>
-    {
-        // Lab için parolayı kolaylaştırmak istersen (opsiyonel):
-        options.Password.RequireDigit = false;
-        options.Password.RequireLowercase = false;
-        options.Password.RequireUppercase = false;
-        options.Password.RequireNonAlphanumeric = false;
-        options.Password.RequiredLength = 6;
-    })
-    .AddEntityFrameworkStores<ApplicationDbContext>();
-
-// Eğer ileride [Authorize] kullanırsan, login yolu bizim controller’a gelsin:
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.LoginPath = "/Account/Login";
-});
-
-var app = builder.Build();
-
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
-}
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-// Identity UI paketini ekledik; Razor Pages map etmek iyi olur
-app.MapRazorPages();
-
-app.Run();
-```
-
-Kontrol: şimdi çalıştır.
-
-```bash
-dotnet run
-```
-
-Tarayıcı: `https://localhost:<port>` açılmalı.
-
----
-
-## Step 4 — Register ekranı (ViewModel + Controller + View)
-
-### 4.1 RegisterViewModel
-
-Dosya:
-
-* `Models/RegisterViewModel.cs`
-
-```csharp
-using System.ComponentModel.DataAnnotations;
-
-namespace UserAuthInMemoryApp.Models;
-
-public class RegisterViewModel
-{
-    [Required]
-    [EmailAddress]
-    public string Email { get; set; } = string.Empty;
-
-    [Required]
-    [DataType(DataType.Password)]
-    public string Password { get; set; } = string.Empty;
-}
-```
-
-### 4.2 AccountController (Register GET/POST)
-
-Dosya:
-
-* `Controllers/AccountController.cs`
-
-```csharp
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using UserAuthInMemoryApp.Models;
-
-namespace UserAuthInMemoryApp.Controllers;
-
-public class AccountController : Controller
-{
-    private readonly UserManager<IdentityUser> _userManager;
-    private readonly SignInManager<IdentityUser> _signInManager;
-
-    public AccountController(
-        UserManager<IdentityUser> userManager,
-        SignInManager<IdentityUser> signInManager)
-    {
-        _userManager = userManager;
-        _signInManager = signInManager;
-    }
-
-    [HttpGet]
-    public IActionResult Register()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Register(RegisterViewModel model)
-    {
-        if (!ModelState.IsValid)
-            return View(model);
-
-        var user = new IdentityUser
-        {
-            UserName = model.Email,
-            Email = model.Email
-        };
-
-        var result = await _userManager.CreateAsync(user, model.Password);
-
-        if (result.Succeeded)
-        {
-            return RedirectToAction(nameof(Login));
-        }
-
-        foreach (var error in result.Errors)
-            ModelState.AddModelError(string.Empty, error.Description);
-
-        return View(model);
-    }
-
-    // Login adımını Step 6'da tamamlayacağız (aşağıda da veriyorum)
-    [HttpGet]
-    public IActionResult Login()
-    {
-        return View();
-    }
-}
-```
-
-### 4.3 Register View
-
-**Önerilen yer:** `Views/Account/Register.cshtml`
-(Answer key “Views/Shared” demiş ama Account altında tutmak daha temiz; MVC zaten bulur.)
-
-Dosya:
-
-* `Views/Account/Register.cshtml`
+1. Dosyanın en üstüne (veya uygun bir yere) şu inject’leri ekle:
 
 ```cshtml
-@model UserAuthInMemoryApp.Models.RegisterViewModel
-
-<h2>Register</h2>
-
-<form asp-action="Register" method="post">
-    @Html.AntiForgeryToken()
-
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-    </div>
-
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-
-    <button type="submit">Register</button>
-</form>
-
-<div asp-validation-summary="All"></div>
-<a asp-action="Login">Already have an account? Login</a>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 ```
 
----
+2. Navbar’daki `<ul class="navbar-nav ...">` bölümüne şunu ekle (mevcut linklerin yanına):
 
-## Step 5 — Register sonrası Login’e yönlendirme
-
-Bunu zaten Register POST içinde yaptık:
-
-```csharp
-return RedirectToAction(nameof(Login));
-```
-
----
-
-## Step 6 — Login (ViewModel + Controller POST + View)
-
-### 6.1 LoginViewModel
-
-Dosya:
-
-* `Models/LoginViewModel.cs`
-
-```csharp
-using System.ComponentModel.DataAnnotations;
-
-namespace UserAuthInMemoryApp.Models;
-
-public class LoginViewModel
+```cshtml
+<ul class="navbar-nav ms-auto">
+@if (SignInManager.IsSignedIn(User))
 {
-    [Required]
-    [EmailAddress]
-    public string Email { get; set; } = string.Empty;
+    <li class="nav-item">
+        <span class="nav-link text-dark">Merhaba, @User.Identity?.Name</span>
+    </li>
+    <li class="nav-item">
+        <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+    </li>
+}
+</ul>
+```
 
-    [Required]
-    [DataType(DataType.Password)]
-    public string Password { get; set; } = string.Empty;
+> `Logout` işlemi **POST** olarak yapılmalı (CSRF için doğru pratik). Biz zaten `Logout` action’ını POST yazmıştık.
 
-    public bool RememberMe { get; set; }
+---
+
+## Step 9 — Sayfa koruma: `[Authorize]` ile giriş zorunlu yapalım
+
+Örnek olarak `Home/Privacy` sayfasını koruyalım.
+
+Dosya: `Controllers/HomeController.cs`
+
+En üste ekle:
+
+```csharp
+using Microsoft.AspNetCore.Authorization;
+```
+
+Sonra `Privacy` action’ını şöyle değiştir:
+
+```csharp
+[Authorize]
+public IActionResult Privacy()
+{
+    return View();
 }
 ```
 
-### 6.2 AccountController: Login POST + Logout ekle
+Artık `https://localhost:<port>/Home/Privacy` açılınca login ister.
 
-`AccountController.cs` içine (Login GET zaten var) şunları ekle:
+> Login sayfasına yönlenmesi için `Program.cs`’teki `options.LoginPath = "/Account/Login";` ayarı zaten hazır.
+
+---
+
+## Step 10 — Login’de ReturnUrl desteği (login sonrası doğru yere dön)
+
+Şu an login olunca her zaman `Home/Index`’e gidiyor. `[Authorize]` ile korunan sayfaya gitmeye çalışınca Identity genelde `?ReturnUrl=...` koyar. Biz bunu destekleyelim.
+
+### 10.1 Login GET: ReturnUrl’ı taşı
+
+`Controllers/AccountController.cs` içinde Login GET:
+
+```csharp
+[HttpGet]
+public IActionResult Login(string? returnUrl = null)
+{
+    ViewData["ReturnUrl"] = returnUrl;
+    return View();
+}
+```
+
+### 10.2 Login POST: ReturnUrl’a güvenli redirect
+
+Login POST’u şöyle güncelle:
 
 ```csharp
 [HttpPost]
 [ValidateAntiForgeryToken]
-public async Task<IActionResult> Login(LoginViewModel model)
+public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl = null)
 {
+    ViewData["ReturnUrl"] = returnUrl;
+
     if (!ModelState.IsValid)
         return View(model);
 
@@ -312,100 +112,171 @@ public async Task<IActionResult> Login(LoginViewModel model)
         lockoutOnFailure: false);
 
     if (result.Succeeded)
+    {
+        if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+            return Redirect(returnUrl);
+
         return RedirectToAction("Index", "Home");
+    }
 
     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
     return View(model);
 }
+```
 
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Logout()
-{
-    await _signInManager.SignOutAsync();
-    return RedirectToAction("Index", "Home");
+### 10.3 Login View: ReturnUrl’ı hidden olarak gönder
+
+`Views/Account/Login.cshtml` formuna (form tag’inin içine) şunu ekle:
+
+```cshtml
+<input type="hidden" name="returnUrl" value="@(ViewData["ReturnUrl"] ?? "")" />
+```
+
+Aynı şekilde Register’dan sonra Login’e ReturnUrl ile gidebilmek istersen Step 10.4’ü de ekleyebilirsin:
+
+### 10.4 Register POST: Login’e ReturnUrl ile yönlendir (opsiyonel)
+
+Register POST’ta RedirectToAction satırını şu hale getir:
+
+```csharp
+return RedirectToAction(nameof(Login), new { returnUrl });
+```
+
+ve Register action imzasını şöyle yap:
+
+```csharp
+public async Task<IActionResult> Register(RegisterViewModel model, string? returnUrl = null)
+```
+
+---
+
+## Step 11 — Client-side validation (ekranda anında validation)
+
+MVC template genelde hazır getirir. Sadece view’lara partial ekleyelim:
+
+### 11.1 Register view en alta ekle
+
+`Views/Account/Register.cshtml` en altına:
+
+```cshtml
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }
 ```
 
-### 6.3 Login View
+### 11.2 Login view en alta ekle
 
-Dosya:
-
-* `Views/Account/Login.cshtml`
+`Views/Account/Login.cshtml` en altına:
 
 ```cshtml
-@model UserAuthInMemoryApp.Models.LoginViewModel
-
-<h2>Login</h2>
-
-<form asp-action="Login" method="post">
-    @Html.AntiForgeryToken()
-
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-    </div>
-
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-
-    <div>
-        <label asp-for="RememberMe"></label>
-        <input asp-for="RememberMe" type="checkbox" />
-    </div>
-
-    <button type="submit">Login</button>
-</form>
-
-<div asp-validation-summary="All"></div>
-<a asp-action="Register">Create account</a>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 ```
+
+> Eğer `_ValidationScriptsPartial` bulunamaz hatası alırsan söyle — bazı şablonlarda kaldırılabiliyor; gerekirse ekleriz.
 
 ---
 
-## Step 7 — Test
+## Step 12 — “In-memory’de user var mı?” Debug ekranı (lab için)
 
-1. Çalıştır:
+Bu adım **sadece lab/demonstrasyon** için. In-memory’de kayıtların oluştuğunu “gözle” göstermek için ideal.
 
-```bash
-dotnet run
+### 12.1 Controller: DebugUsers
+
+Yeni controller dosyası oluştur:
+
+* `Controllers/AdminController.cs`
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using UserAuthInMemoryApp.Data;
+
+namespace UserAuthInMemoryApp.Controllers;
+
+public class AdminController : Controller
+{
+    private readonly ApplicationDbContext _db;
+
+    public AdminController(ApplicationDbContext db)
+    {
+        _db = db;
+    }
+
+    [HttpGet]
+    public IActionResult Users()
+    {
+        var users = _db.Users
+            .Select(u => new UserRow { Id = u.Id, Email = u.Email!, UserName = u.UserName! })
+            .ToList();
+
+        return View(users);
+    }
+
+    public class UserRow
+    {
+        public string Id { get; set; } = "";
+        public string Email { get; set; } = "";
+        public string UserName { get; set; } = "";
+    }
+}
 ```
 
-2. Register’a git:
+### 12.2 View: Users listesi
 
-* `https://localhost:<port>/Account/Register`
+Dosya oluştur:
 
-3. Kayıt ol → Login’e yönlenmeli.
-4. Login ol:
-
-* Doğru email/şifre ile Home/Index’e dönmeli.
-
-5. **Remember Me** :
-
-* Aynı uygulama çalışırken tarayıcıyı kapat-aç dene (cookie kalır).
-* Ama **uygulamayı restart edince kullanıcılar InMemory olduğu için silinir** → cookie olsa bile user store’da kullanıcı kalmayacağı için oturum davranışı bozulur/yeniden login isteyebilir. Bu “in-memory storage behavior”ın doğal sonucu.
-
----
-
-## Minik iyileştirme (menüye link eklemek)
-
-`Views/Shared/_Layout.cshtml` içinde navigation’a şunları ekleyebilirsin:
+* `Views/Admin/Users.cshtml`
 
 ```cshtml
-<li class="nav-item">
-  <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
-</li>
+@model List<UserAuthInMemoryApp.Controllers.AdminController.UserRow>
+
+<h2>In-Memory Users</h2>
+
+@if (Model.Count == 0)
+{
+    <p>Henüz kullanıcı yok.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>UserName</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Id</td>
+                <td>@u.Email</td>
+                <td>@u.UserName</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
 ```
+
+Şimdi şu URL ile gör:
+
+* `https://localhost:<port>/Admin/Users`
+
+Kayıt olduktan sonra listede kullanıcıyı görmelisin.
+Uygulamayı kapatıp tekrar `dotnet run` yapınca liste **boş** gelir (in-memory davranışı).
 
 ---
 
-### Şimdi senden tek şey:
+## Step 13 — Test senaryosu (hızlı kontrol)
 
-Şu ana kadar  **Step 3** ’e kadar (Program.cs dahil) geldiysen `dotnet run` çıktısında bir hata var mı? Varsa hatayı buraya yapıştır; yoksa Step 4-6 dosyalarını birlikte yerleştirip ilk kayıt/login testini netleştirelim.
+1. `dotnet run`
+2. `/Account/Register` → kayıt ol
+3. `/Admin/Users` → kullanıcı göründü mü?
+4. `/Home/Privacy` → login ister mi? login olunca privacy’e döndü mü? (ReturnUrl)
+5. `RememberMe` işaretle → tarayıcıyı kapat-aç dene
+6. Uygulamayı restart et → `/Admin/Users` boş mu?
+
+---

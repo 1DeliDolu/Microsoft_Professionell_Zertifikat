@@ -1,0 +1,25 @@
+@page "/callback"
+@model OAuthClient.Pages.CallbackModel
+@{
+    ViewData["Title"] = "OAuth Callback";
+}
+
+<h2>OAuth Callback</h2>
+
+@if (!string.IsNullOrEmpty(Model.Error))
+{
+    <div style="color:red;">
+        <b>Error:</b> @Model.Error
+    </div>
+}
+else if (!string.IsNullOrEmpty(Model.AccessToken))
+{
+    <p><b>Access Token:</b></p>
+    <textarea rows="10" style="width:100%;">@Model.AccessToken</textarea>
+    <p><b>Token Type:</b> @Model.TokenType</p>
+    <p><b>Expires In:</b> @Model.ExpiresIn</p>
+}
+else
+{
+    <p>Waiting for authorization code...</p>
+}
