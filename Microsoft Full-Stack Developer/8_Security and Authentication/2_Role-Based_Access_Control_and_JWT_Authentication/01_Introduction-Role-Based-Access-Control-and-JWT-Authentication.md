@@ -1,0 +1,9 @@
+## 🔐 Rol Tabanlı Erişim Kontrolü ve JWT Kimlik Doğrulama
+
+Rol Tabanlı Erişim Kontrolü ve JWT Kimlik Doğrulamaya hoş geldiniz. Bu modülde, **Rol Tabanlı Erişim Kontrolü** (*Role-Based Access Control* veya  **RBAC** ) ve **JSON Web Token** ( *JWT* ) ile uygulama erişimini yönetmeyi öğreneceksiniz. RBAC temellerini anlamaktan JWT kimlik doğrulamasını uygulamaya ve API’leri güvence altına almaya kadar, sağlam ve güvenli sistemler kurmak ve endpoint’lerinizi işlemek için en iyi uygulamaları hayata geçirmek adına gerekli becerileri edineceksiniz.
+
+İlk olarak **Rol Tabanlı Erişim Kontrolünü** inceleyerek başlayacağız; kullanıcı izinlerini yönetmede ve güvenlik politikalarını uygulamada neden önemli olduğunu anlayacağız. Ardından,  **JSON Web Token** ’ın yapısını ve amacını ele alacağız ve client’lar ile API’ler arasında güvenli iletişimi nasıl sağladıklarını öğreneceğiz. Sonra **ASP.NET Core** içinde JWT kimlik doğrulamasını uygulamaya geçeceğiz; uygulamanızda JWT’leri yapılandırmak ve kullanmak için gereken pratik adımlara odaklanacağız. Sonrasında JWT’leri kullanarak API endpoint’lerini nasıl güvence altına alacağımızı keşfedeceğiz; böylece yalnızca yetkili kullanıcıların hassas kaynaklara erişebilmesini sağlayacağız.
+
+Son olarak, JWT kimlik doğrulamasını uygulamak için en iyi uygulamalarla ilgili bir tartışma ile modülü tamamlayacağız; bu, güvenli ve verimli sistemler oluşturmanıza yardımcı olacak.
+
+Rol Tabanlı Erişim Kontrolü ve JWT kimlik doğrulamasında uzmanlaşmak, uygulamalarınızı korumak ve kullanıcılarınızın güvenini sürdürmek için kritik öneme sahiptir. Haydi Rol Tabanlı Erişim Kontrolü ve JWT kimlik doğrulamasına başlayalım.
